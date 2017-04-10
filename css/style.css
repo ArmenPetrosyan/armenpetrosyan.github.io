@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  background-image: radial-gradient(circle at -2% -7%, #f9f9f9, rgba(205, 205, 205, 0.41) 75%, rgba(190, 190, 190, 0.2));
+}
+button,
+input {
+  border: none;
+  outline: none;
+}
+button {
+  cursor: pointer;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  font-family: 'Palanquin Dark', sans-serif;
+  min-height: 80px;
+  background-image: url('../img/header.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-content: center;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+}
+.header__title {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+  color: #2A3B47;
+}
+.header__title + .search-form {
+  margin-left: 20px;
+}
+.search-form {
+  font-family: OpenSans, sans-serif;
+}
+.search-form__field {
+  min-width: 700px;
+  height: 40px;
+  opacity: 0.93;
+  padding: 0 20px;
+  border-radius: 22px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.search-form__field:focus {
+  border-color: #ff6b61;
+}
+.search-form__field::-webkit-input-placeholder {
+  color: #ff6b61;
+  font-weight: 300;
+}
+.search-form__button {
+  position: relative;
+  width: 169px;
+  height: 40px;
+  margin-left: 20px;
+  border-radius: 21px;
+  background-color: #ff6b61;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 2px 7px 0 rgba(216, 109, 100, 0.25);
+}
+.search-form__button:hover {
+  background-color: #ff5347;
+}
+.search-form__button:active {
+  background-color: #ff3b2e;
+  top: 1px;
+}
+.main {
+  font-family: Roboto, sans-serif;
+  padding-top: 40px;
+}
+.main .counter {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2E2F59;
+}
+.main .table {
+  margin-top: 40px;
+  width: 100%;
+}
+.main .table__header {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #667480;
+  background: rgba(210, 221, 231, 0.3);
+}
+.main .table th {
+  cursor: pointer;
+}
+.main .table th,
+.main .table td {
+  padding: 20px;
+  text-align: center;
+}
