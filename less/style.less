@@ -93,8 +93,27 @@ button {
 }
 
 .main {
-  font-family: Roboto, sans-serif;
   padding-top: 40px;
+  min-height: 100vh;
+
+  &_loading {
+    &:before {
+      content: '';
+      width: 164px;
+      height: 64px;
+      background-image: url('../img/oval-loader.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+    }
+
+    .data-table {
+      opacity: .1;
+    }
+  }
 
   .counter {
     text-align: center;
@@ -123,4 +142,18 @@ button {
       text-align: center;
     }
   }
+}
+
+.main,
+.footer {
+  font-family: Roboto, sans-serif;
+}
+
+.footer {
+  padding: 40px;
+  text-align: center;
+}
+
+.hidden {
+  opacity: 0;
 }
