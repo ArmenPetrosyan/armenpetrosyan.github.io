@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="header__title">Find The Movie</h1>
+            <h1 class="header__title">Movie Finder</h1>
             <form action="https://api.themoviedb.org/" class="search-form">
                 <input type="text" value="shark" class="search-form__field" placeholder="E.g.:Reservoir Dogs">
                 <button id="searchButton" class="search-form__button">Find</button>
@@ -25,13 +25,41 @@
             <table class="table data-table">
                 <thead>
                     <tr class="table__header">
-                        <th data-key="id">ID</th>
-                        <th data-key="title">Title</th>
-                        <th data-key="language">Language</th>
-                        <th data-key="popularity">Popularity Index</th>
-                        <th data-key="votes">Votes Count</th>
-                        <th data-key="rating">Rating</th>
-                        <th data-key="releaseDate">Release Date</th>
+                        <th>
+                            <span data-key="id" class="table__title">
+                                ID
+                            </span>
+                        </th>
+                        <th>
+                            <span data-key="title" class="table__title">
+                                Title
+                            </span>
+                        </th>
+                        <th>
+                            <span data-key="language" class="table__title">
+                                Language
+                            </span>
+                        </th>
+                        <th>
+                            <span data-key="popularity" class="table__title">
+                                Popularity Index
+                            </span>
+                        </th>
+                        <th>
+                            <span data-key="votes" class="table__title">
+                                Votes Count
+                            </span>
+                        </th>
+                        <th>
+                            <span data-key="rating" class="table__title">
+                                Rating
+                            </span>
+                        </th>
+                        <th>
+                            <span data-key="releaseDate" class="table__title">
+                                Release Date
+                            </span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

@@ -113,8 +113,34 @@ button {
   color: #667480;
   background: rgba(210, 221, 231, 0.3);
 }
-.main .table th {
+.main .table__title {
   cursor: pointer;
+  position: relative;
+}
+.main .table__title:hover {
+  color: #2E2F59;
+}
+.main .table__title:active {
+  color: #484a8b;
+}
+.main .table__title:after {
+  content: '';
+  position: absolute;
+  display: none;
+  width: 15px;
+  height: 15px;
+  right: -20px;
+  top: 2px;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20height%3D%22512px%22%20%20version%3D%221.1%22%20viewBox%3D%220%200%20512%20512%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%3Cpath%20fill%3D%22%232E2F59%22%20d%3D%22M128.4%2C189.3L233.4%2C89c5.8-6%2C13.7-9%2C22.4-9c8.7%2C0%2C16.5%2C3%2C22.4%2C9l105.4%2C100.3c12.5%2C11.9%2C12.5%2C31.3%2C0%2C43.2%20%20c-12.5%2C11.9-32.7%2C11.9-45.2%2C0L288%2C184.4v217c0%2C16.9-14.3%2C30.6-32%2C30.6c-17.7%2C0-32-13.7-32-30.6v-217l-50.4%2C48.2%20%20c-12.5%2C11.9-32.7%2C11.9-45.2%2C0C115.9%2C220.6%2C115.9%2C201.3%2C128.4%2C189.3z%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main .table__title.up:after,
+.main .table__title.down:after {
+  display: block;
+}
+.main .table__title.down:after {
+  transform: rotate(180deg);
 }
 .main .table th,
 .main .table td {

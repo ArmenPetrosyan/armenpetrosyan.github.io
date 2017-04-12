@@ -100,10 +100,13 @@ class MovieFinder {
 
   clickHandler(event) {
     const target = event.target;
+    if(!target.classList.contains('table__title')) return false;
+
     const key = target.getAttribute('data-key');
     const sorted = this.sortSequenceByFieldName(this.results,key,this.isSorted);
     this.updateTable(sorted);
-    target.classList.add()
+    target.classList.remove((this.isSorted) ? 'up' : 'down');
+    target.classList.add((this.isSorted) ? 'down' : 'up');
     this.isSorted = !this.isSorted;
   }
 }
