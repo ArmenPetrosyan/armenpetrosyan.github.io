@@ -25,6 +25,10 @@ class MovieFinder {
     this.updateTable(this.results);
   }
 
+  filterSequence(dataSequence) {
+    return dataSequence.map(this.filterObject);
+  }
+
   filterObject({id, title, original_language:language, popularity, vote_count:votes, vote_average:rating, release_date:releaseDate}) {
     return {
       id,
@@ -35,10 +39,6 @@ class MovieFinder {
       rating,
       releaseDate
     }
-  }
-
-  filterSequence(dataSequence) {
-    return dataSequence.map(this.filterObject);
   }
 
   sortSequenceByFieldName(sequence, field, reverse) {
@@ -81,8 +81,23 @@ class MovieFinder {
     this.counterValueElement.innerText = dataSequence.length;
 
     dataSequence.forEach(data => {
-      this.addTableRow(data)
+      this.addTableRow(data);
     });
+  }
+
+  sortTable(currentNode, isSorted) {
+    if(!currentNode.classList.contains('table__title')) return false;
+
+    const key = currentNode.getAttribute('data-key');
+    const sorted = this.sortSequenceByFieldName(this.results,key,this.isSorted);
+    this.updateTable(sorted);
+
+    document.querySelectorAll('.table__title').forEach(function(node){
+      node.classList.remove('up','down');
+    });
+
+    currentNode.classList.add((isSorted) ? 'down' : 'up');
+    this.isSorted = !this.isSorted;
   }
 
   submitHandler(event) {
@@ -99,15 +114,7 @@ class MovieFinder {
   };
 
   clickHandler(event) {
-    const target = event.target;
-    if(!target.classList.contains('table__title')) return false;
-
-    const key = target.getAttribute('data-key');
-    const sorted = this.sortSequenceByFieldName(this.results,key,this.isSorted);
-    this.updateTable(sorted);
-    target.classList.remove((this.isSorted) ? 'up' : 'down');
-    target.classList.add((this.isSorted) ? 'down' : 'up');
-    this.isSorted = !this.isSorted;
+    this.sortTable(event.target, this.isSorted);
   }
 }
 
