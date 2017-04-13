@@ -8,13 +8,16 @@ class MovieFinder {
   }
 
   init() {
-    this.form = document.querySelector('.search-form');
+    // Getting nodes
+    this.main = document.querySelector('.main');
     this.header = document.querySelector('.table__header');
+    this.form = document.querySelector('.search-form');
     this.counterElement = document.querySelector('.counter');
     this.counterValueElement = document.querySelector('.counter__value');
-    this.main = document.querySelector('.main');
-    this.tbody = document.querySelector('.data-table tbody');
+    this.tableBody = document.querySelector('.data-table tbody');
+    this.titleNodes = document.querySelectorAll('.table__title');
 
+    // Setting up event handlers
     this.form.addEventListener('submit', this.submitHandler.bind(this));
     this.header.addEventListener('click', this.clickHandler.bind(this));
   }
@@ -69,11 +72,11 @@ class MovieFinder {
       row.appendChild(td);
     }
 
-    this.tbody.appendChild(row);
+    this.tableBody.appendChild(row);
   }
 
   clearTable() {
-    this.tbody.innerHTML = '';
+    this.tableBody.innerHTML = '';
   }
 
   updateTable(dataSequence) {
@@ -92,7 +95,7 @@ class MovieFinder {
     const sorted = this.sortSequenceByFieldName(this.results,key,this.isSorted);
     this.updateTable(sorted);
 
-    document.querySelectorAll('.table__title').forEach(function(node){
+    this.titleNodes.forEach(function(node){
       node.classList.remove('up','down');
     });
 
