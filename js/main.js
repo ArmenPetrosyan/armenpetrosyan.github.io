@@ -9,21 +9,21 @@ class MovieFinder {
 
   init() {
     // Getting nodes
-    this.main = document.querySelector('.main');
-    this.header = document.querySelector('.table__header');
-    this.form = document.querySelector('.search-form');
-    this.counterElement = document.querySelector('.counter');
-    this.counterValueElement = document.querySelector('.counter__value');
-    this.tableBody = document.querySelector('.data-table tbody');
+    this.mainNode = document.querySelector('.main');
+    this.headerNode = document.querySelector('.table__header');
+    this.formNode = document.querySelector('.search-form');
+    this.counterNode = document.querySelector('.counter');
+    this.counterValueNode = document.querySelector('.counter__value');
+    this.tableBodyNode = document.querySelector('.data-table tbody');
     this.titleNodes = document.querySelectorAll('.table__title');
 
     // Setting up event handlers
-    this.form.addEventListener('submit', this.submitHandler.bind(this));
-    this.header.addEventListener('click', this.clickHandler.bind(this));
+    this.formNode.addEventListener('submit', this.submitHandler.bind(this));
+    this.headerNode.addEventListener('click', this.sortHandler.bind(this));
   }
 
   processData({results}) {
-    this.counterElement.classList.remove('hidden');
+    this.counterNode.classList.remove('hidden');
     this.results = this.filterSequence(results);
     this.updateTable(this.results);
   }
@@ -72,16 +72,16 @@ class MovieFinder {
       row.appendChild(td);
     }
 
-    this.tableBody.appendChild(row);
+    this.tableBodyNode.appendChild(row);
   }
 
   clearTable() {
-    this.tableBody.innerHTML = '';
+    this.tableBodyNode.innerHTML = '';
   }
 
   updateTable(dataSequence) {
     this.clearTable();
-    this.counterValueElement.innerText = dataSequence.length;
+    this.counterValueNode.innerText = dataSequence.length;
 
     dataSequence.forEach(data => {
       this.addTableRow(data);
@@ -108,15 +108,15 @@ class MovieFinder {
     const value = event.srcElement[0].value;
     const query = `${this.queryPrefix}${value}`;
 
-    this.main.classList.add('main_loading');
+    this.mainNode.classList.add('main_loading');
 
     fetch(query).then(response => {
-      this.main.classList.remove('main_loading');
+      this.mainNode.classList.remove('main_loading');
       return response.json();
     }).then(this.processData.bind(this));
   };
 
-  clickHandler(event) {
+  sortHandler(event) {
     this.sortTable(event.target, this.isSorted);
   }
 }
