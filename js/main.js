@@ -44,9 +44,16 @@ class MovieFinder {
     }
   }
 
+  /**
+   * Object sequence sorting function
+   * @param sequence
+   * @param field
+   * @param [reverse]
+   * @returns {Array.<T>}
+   */
   sortSequenceByFieldName(sequence, field, reverse) {
+    // Sort with custom comparator function
     const sorted = sequence.sort((left, right) => {
-
       let [leftVal, rightVal] = [left[field], right[field]];
 
       // for lexical comparison
@@ -91,9 +98,13 @@ class MovieFinder {
   sortTable(currentNode, isSorted) {
     if(!currentNode.classList.contains('table__title')) return false;
 
+    const inProcess = currentNode.classList.contains('up') || currentNode.classList.contains('down');
     const key = currentNode.getAttribute('data-key');
-    const sorted = this.sortSequenceByFieldName(this.results,key,this.isSorted);
-    this.updateTable(sorted);
+
+    isSorted = (inProcess) ? isSorted : this.isSorted = false;
+
+    const sortedSequence = this.sortSequenceByFieldName(this.results, key, isSorted);
+    this.updateTable(sortedSequence);
 
     this.titleNodes.forEach(function(node){
       node.classList.remove('up','down');
@@ -103,9 +114,15 @@ class MovieFinder {
     this.isSorted = !this.isSorted;
   }
 
+  /**
+   * On form submit - fetch and process data
+   * @param event
+   * @returns {boolean}
+   */
   submitHandler(event) {
     event.preventDefault();
-    const value = event.srcElement[0].value;
+    const value = encodeURI(event.srcElement[0].value);
+    if(!value) return false;
     const query = `${this.queryPrefix}${value}`;
 
     this.mainNode.classList.add('main_loading');
@@ -113,9 +130,14 @@ class MovieFinder {
     fetch(query).then(response => {
       this.mainNode.classList.remove('main_loading');
       return response.json();
-    }).then(this.processData.bind(this));
+    }).then(this.processData.bind(this))
+      .catch(console.log);
   };
 
+  /**
+   * On column heading click - sort table data by current column
+   * @param event
+   */
   sortHandler(event) {
     this.sortTable(event.target, this.isSorted);
   }
