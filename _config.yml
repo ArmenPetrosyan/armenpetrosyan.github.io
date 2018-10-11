@@ -1,7 +1,2 @@
 plugins:
   - jekyll-redirect-from
-
-  title: My amazing page
-  redirect_from:
-    - /
-    - /build/
