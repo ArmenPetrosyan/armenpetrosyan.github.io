@@ -4,4 +4,4 @@ plugins:
   title: My amazing page
   redirect_from:
     - /
-    - /build
+    - /build/
