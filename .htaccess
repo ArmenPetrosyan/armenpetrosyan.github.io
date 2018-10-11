@@ -1,4 +1,10 @@
 RewriteEngine on
-RewriteCond %{HTTP_HOST} arnie\.xyz [NC]
-RewriteCond %{REQUEST_URI} ^/$
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} !^/build/
+
+# Rewrites all URLS [Replace "example" with the actual domain, without the TLD (.com, .net, .biz, etc)]
+RewriteCond %{HTTP_HOST} ^(www\.)?arnie\.
+
+# Rewrite all those to insert /folder
 RewriteRule ^(.*)$ /build/$1 [L]
