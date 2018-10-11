@@ -16,6 +16,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
 
   &__welcome {
@@ -27,6 +31,10 @@
     &_highlight {
       color: #E94556;
     }
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
 
   &__quote {
@@ -34,6 +42,10 @@
     font-weight: 800;
     line-height: 1.2;
     color: #243047;
+
+    @media (max-width: 1024px) {
+      font-size: 48px;
+    }
   }
 
   &__navigation {
@@ -43,6 +55,10 @@
     &-list {
       display: flex;
       margin-left: 10px;
+
+      @media (max-width: 1024px) {
+        margin-left: 0;
+      }
 
       &-item {
         margin-right: 20px;
@@ -67,6 +83,10 @@
       font-weight: 800;
       margin-right: 10px;
     }
+
+    @media (max-width: 1024px) {
+      font-size: 30px;
+    }
   }
 
   &__call-to-action {
@@ -74,6 +94,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {
+      align-items: flex-start;
+    }
 
     &__button {
       min-width: 360px;
@@ -84,6 +108,10 @@
       font-size: 24px;
       font-weight: 700;
 
+      @media (max-width: 1024px) {
+        min-width: 250px;
+        font-size: 18px;
+      }
     }
 
     &__notice {
